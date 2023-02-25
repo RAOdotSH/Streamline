@@ -1,0 +1,14 @@
+{
+    "name": "Streamline",
+    "description": "Streamline your YouTube experience with custom speed controls.",
+    "version": "0.0.1",
+    "manifest_version": 3,
+    "action":{
+        "default_popup": "popup.html",
+        "default_icon": "assets/128/logo.png"
+    },
+    "permissions": ["activeTab"],
+    "icons": {
+        "128": "assets/128/logo.png"
+    }
+}
