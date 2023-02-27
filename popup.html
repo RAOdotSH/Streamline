@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 
 <html>
-
 <head>
   <meta charset="utf-8">
   <titl> Streamline </title>
@@ -12,27 +11,25 @@
 <body>
   <!-- Body will contain a Header = Streamline. A input field to add custom speed and a button to submit. And counters which varies from 0.5 to 4 with difference of 0.5 with two buttons '+' and "-" on either side. -->
 
-  <div class="container">
-    <div class="header">
-      <h1> Streamline </h1>
-    </div>
+  <div class="main__container">
 
-    <div class="finder">
-      <div class="finder__outer">
-        <div class="finder__inner">
-          <div class="finder__icon" ref="icon"></div>
-          <input id="speed_input" class="finder__input" type="text" name="q" placeholder="Custom Speed" />
+    <div class="container">
+      <div class="header">
+        <h1> Streamline </h1>
+      </div>
+      
+      <div class="finder">
+        <div class="finder__outer">
+          <div class="finder__inner">
+            <div class="finder__icon" ref="icon"></div>
+            <input id="speed_input" class="finder__input" type="text" name="q" placeholder="Custom Speed" />
+          </div>
         </div>
       </div>
-    </div>
-
-    <div class="Submit" <button class="btn" id="submit" onclick="changePlaybackRate()"> Submit </button>
-    </div>
-
-    <div class="counter">
-      <button id="minus"> - </button>
-      <span id="count"> 1 </span>
-      <button id="plus"> + </button>
+      
+      <div class="Submit" <button class="btn" id="submit" onclick="changePlaybackRate()"> Submit </button>
+      </div>
+      
     </div>
   </div>
 
