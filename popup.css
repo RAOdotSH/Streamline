@@ -1,55 +1,147 @@
-body{
-   background-color : #efefef;
-   color: white
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+html,
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-align: center;
+  place-items: center;
+  background: #003bdf;
 }
 
-button{
-   background-color: #F91E5A;
-   border: none;
-   color: white;
-   padding: 6px 0px;
-   text-align: center;
-   text-decoration: none;
-   display: inline-block;
-   font-size: 16px;
-   margin-top: 10px;
-   width: 180px;
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-#rangeText{
-   text-align: center;
-   background-color : #ffffffde;
-   color : white;
-   border: 0px;
-   font-size: 24px;
-   width: 180px;
+/* default if all button classes are removed */
+button {
+  background-color: #f91e5a;
+  border: none;
+  color: white;
+  padding: 6px 0px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 10px;
+  width: 180px;
 }
 
-#playbackSlider{
+#rangeText {
+  text-align: center;
+  background-color: white;
+  color: #003bdf;
+  font-weight: 600;
+  border-radius: 0.3rem;
+  padding: 0.5rem 1rem;
+  border: 0px;
+  font-size: 24px;
+  width: 180px;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+#playbackSlider {
   -webkit-appearance: none;
   width: 100%;
   height: 15px;
-  border-radius: 5px;   
+  border-radius: 5px;
   background: #d3d3d3;
   outline: none;
   /* opacity: 0.7; */
-  -webkit-transition: .2s;
-  transition: opacity .2s;
-   /* width: 100%; */
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+  /* width: 100%; */
 }
 
-.slider::-webkit-slider-thumb {
+.range {
+  height: 80px;
+  width: 400px;
+  background: #fff;
+  border-radius: 10px;
+  margin: 2rem 2rem 1rem 2rem;
+  padding: 0 65px 0 45px;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sliderValue {
+  position: relative;
+  width: 100%;
+}
+
+.sliderValue span {
+  position: absolute;
+  height: 45px;
+  width: 45px;
+  transform: translateX(-70%) scale(0);
+  font-weight: 500;
+  top: -40px;
+  left: 6.25%;
+  line-height: 55px;
+  z-index: 2;
+  color: #fff;
+  transform-origin: bottom;
+  transition: transform 0.3s ease-in-out;
+}
+
+.sliderValue span.show {
+  transform: translateX(-70%) scale(1);
+}
+
+.sliderValue span:after {
+  position: absolute;
+  content: '';
+  height: 100%;
+  width: 100%;
+  background: #003bdf;
+  border: 3px solid #fff;
+  z-index: -1;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  border-bottom-left-radius: 50%;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  position: relative;
+}
+
+.field .value {
+  position: absolute;
+  font-size: 18px;
+  color: #003bdf;
+  font-weight: 600;
+}
+
+.field .value.left {
+  left: -22px;
+}
+
+.field .value.right {
+  right: -43px;
+}
+
+/* .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 25px;
   height: 25px;
-  border-radius: 50%; 
+  border-radius: 50%;
   background: #ffffff;
   cursor: pointer;
 }
@@ -60,8 +152,138 @@ button{
   border-radius: 50%;
   background: #ffffff;
   cursor: pointer;
+} */
+
+:focus {
+  outline: 0px;
 }
 
-:focus{
-   outline: 0px
+.range input {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 1rem;
+  box-shadow: inset 2px 2px 4px #bebebe, inset -2px -2px 4px #ffffff;
+  background: #ffffff;
+  border-radius: 5px;
+  outline: none;
+  overflow: hidden;
+  border: none;
+  z-index: 2222;
+}
+
+.range input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid white;
+  border-radius: 50%;
+  background-image: linear-gradient(to right bottom, #7ebaff, #003bdf);
+  box-shadow: -407px 0 0 400px #003bdf;
+  cursor: pointer;
+}
+
+.range input::-moz-range-thumb {
+  -webkit-appearance: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: red;
+  border-radius: 50%;
+  background: #003bdf;
+  border: 1px solid #003bdf;
+  cursor: pointer;
+}
+
+.range input::-moz-range-progress {
+  background: #003bdf;
+}
+
+.buttonPushable {
+  position: relative;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  outline-offset: 4px;
+  transition: filter 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.buttonShadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: hsl(0deg 0% 0% / 0.25);
+  will-change: transform;
+  transform: translateY(2px);
+  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+}
+
+.buttonEdge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: linear-gradient(
+    to left,
+    hsl(340deg 100% 16%) 0%,
+    hsl(340deg 100% 32%) 8%,
+    hsl(340deg 100% 32%) 92%,
+    hsl(340deg 100% 16%) 100%
+  );
+}
+
+.buttonFront {
+  display: block;
+  position: relative;
+  padding: 12px 27px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  color: white;
+  background: hsl(345deg 100% 47%);
+  will-change: transform;
+  transform: translateY(-4px);
+  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+}
+
+.buttonPushable:hover {
+  filter: brightness(110%);
+  -webkit-filter: brightness(110%);
+}
+
+.buttonPushable:hover .buttonFront {
+  transform: translateY(-6px);
+  transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+}
+
+.buttonPushable:active .buttonFront {
+  transform: translateY(-2px);
+  transition: transform 34ms;
+}
+
+.buttonPushable:hover .buttonShadow {
+  transform: translateY(4px);
+  transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+}
+
+.buttonPushable:active .buttonShadow {
+  transform: translateY(1px);
+  transition: transform 34ms;
+}
+
+.buttonPushable:focus:not(:focus-visible) {
+  outline: none;
+}
+
+@media (min-width: 768px) {
+  .buttonFront {
+    font-size: 1.25rem;
+    padding: 12px 42px;
+  }
 }
